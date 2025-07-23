@@ -111,80 +111,82 @@ def main_page():
                     tuning_lbl.name = tuning_lbl.value
                     scale_length_lbl.name =  scale_length_lbl.value
                     string_set_lbl.name = string_set_lbl.value                
-                with ui.row(align_items='baseline'):
+with ui.row(align_items='baseline'):
                     _x = 0
                     string_lbl = ui.label(f'String {_x+1}')
                     string_lbl.name = f'{string_lbl.text}'
-                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning')
-                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length')
-                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge')
-                    ui.number(label=f'Tension', format='%.1f', suffix=t_units.value).bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: x).classes('w-20')
+                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning').classes('w-20')
+                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length').classes('w-20')
+                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge').classes('w-16')
+                    ui.input('Tension').bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: f'{x:.1f} {t_units.value}').classes('w-12')
+                    
+                    #ui.number(label=f'Tension', format='%.1f', suffix=t_units.value).bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: x).classes('w-20')
                     #ui.label('Tension lbf').bind_text_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: f'{x:.1f} {t_units.value}')
                     #ui.label('').bind_text_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: f'{t_units.value}')
-                with ui.row(align_items='center'):
+                with ui.row(align_items='baseline'):
                     _x +=1
                     string_lbl = ui.label(f'String {_x+1}')
                     string_lbl.name = f'{string_lbl.text}'
-                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning')
-                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length')
-                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge')
-                    ui.number(label='Tension', format='%.1f', suffix=t_units.value).bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: x).classes('w-20')
-                with ui.row(align_items='center'):
+                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning').classes('w-20')
+                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length').classes('w-20')
+                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge').classes('w-16')
+                    ui.input('Tension').bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: f'{x:.1f} {t_units.value}').classes('w-12')
+                with ui.row(align_items='baseline'):
                     _x +=1
                     string_lbl = ui.label(f'String {_x+1}')
                     string_lbl.name = f'{string_lbl.text}'
-                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning')
-                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length')
-                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge')
-                    ui.number(label='Tension', format='%.1f', suffix=t_units.value).bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: x).classes('w-20')
-                with ui.row(align_items='center'):
+                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning').classes('w-20')
+                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length').classes('w-20')
+                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge').classes('w-16')
+                    ui.input('Tension').bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: f'{x:.1f} {t_units.value}').classes('w-12')
+                with ui.row(align_items='baseline'):
                     _x +=1
                     string_lbl = ui.label(f'String {_x+1}')
                     string_lbl.name = f'{string_lbl.text}'
-                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning')
-                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length')
-                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge')
-                    ui.number(label='Tension', format='%.1f', suffix=t_units.value).bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: x).classes('w-20')
-                with ui.row(align_items='center'):
+                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning').classes('w-20')
+                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length').classes('w-20')
+                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge').classes('w-16')
+                    ui.input('Tension').bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: f'{x:.1f} {t_units.value}').classes('w-12')
+                with ui.row(align_items='baseline'):
                     _x +=1
                     string_lbl = ui.label(f'String {_x+1}')
                     string_lbl.name = f'{string_lbl.text}'
-                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning')
-                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length')
-                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge')
-                    ui.number(label='Tension', format='%.1f', suffix=t_units.value).bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: x).classes('w-20')
-                with ui.row(align_items='center'):
+                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning').classes('w-20')
+                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length').classes('w-20')
+                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge').classes('w-16')
+                    ui.input('Tension').bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: f'{x:.1f} {t_units.value}').classes('w-12')
+                with ui.row(align_items='baseline'):
                     _x +=1
                     string_lbl = ui.label(f'String {_x+1}')
                     string_lbl.name = f'{string_lbl.text}'
-                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning')
-                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length')
-                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge')
-                    ui.number(label='Tension', format='%.1f', suffix=t_units.value).bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: x).classes('w-20')
-                with ui.row(align_items='center'):
+                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning').classes('w-20')
+                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length').classes('w-20')
+                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge').classes('w-16')
+                    ui.input('Tension').bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: f'{x:.1f} {t_units.value}').classes('w-12')
+                with ui.row(align_items='baseline'):
                     _x +=1
                     string_lbl = ui.label(f'String {_x+1}')
                     string_lbl.name = f'{string_lbl.text}'
-                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning')
-                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length')
-                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge')
-                    ui.number(label='Tension', format='%.1f', suffix=t_units.value).bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: x).classes('w-20')
-                with ui.row(align_items='center'):
+                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning').classes('w-20')
+                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length').classes('w-20')
+                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge').classes('w-16')
+                    ui.input('Tension').bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: f'{x:.1f} {t_units.value}').classes('w-12')
+                with ui.row(align_items='baseline'):
                     _x +=1
                     string_lbl = ui.label(f'String {_x+1}')
                     string_lbl.name = f'{string_lbl.text}'
-                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning')
-                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length')
-                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge')
-                    ui.number(label='Tension', format='%.1f', suffix=t_units.value).bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: x).classes('w-20')
-                with ui.row(align_items='center'):
+                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning').classes('w-20')
+                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length').classes('w-20')
+                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge').classes('w-16')
+                    ui.input('Tension').bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: f'{x:.1f} {t_units.value}').classes('w-12')
+                with ui.row(align_items='baseline'):
                     _x +=1
                     string_lbl = ui.label(f'String {_x+1}')
                     string_lbl.name = f'{string_lbl.text}'
-                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning')
-                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length')
-                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).classes('w-20').bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge')
-                    ui.number(label='Tension lbf', format='%.1f', suffix=t_units.value).bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: x).classes('w-20')
+                    ui.select(notes_frequency_selector, label='Note', value=tunings_dictionary[tuning_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Tuning').classes('w-20')
+                    ui.number(label='Scale Length', min=0, step=0.25, value=scale_length_dictionary[scale_length_lbl.name], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'Scale Length').classes('w-20')
+                    ui.select(string_gauge_selector, label='Gauge', value=string_database_daddario[string_set_lbl.name][_x], on_change=lambda: calculate_tension()).bind_value(guitar_data[gtr_lbl.name][string_lbl.name],'String Gauge').classes('w-16')
+                    ui.input('Tension').bind_value_from(guitar_data[gtr_lbl.name][string_lbl.name],'Tension', backward=lambda x: f'{x:.1f} {t_units.value}').classes('w-12')
                 with ui.row(align_items='center'):
                     ui.label('Total Tension : lbf').bind_text_from(guitar_data[gtr_lbl.name], 'Total Tension',  backward=lambda x: f'Total Tension : {x:.1f} {t_units.value}')
                     ui.label('Average Tension : lbf').bind_text_from(guitar_data[gtr_lbl.name], 'Average Tension',  backward=lambda x: f'Average Tension : {x:.1f} {t_units.value}')  
@@ -209,7 +211,7 @@ def main_page():
     
     
     
-    def calculate_tension():
+     def calculate_tension():
         fig.data = []
         guitars = list(guitar_data.keys())
 
@@ -226,7 +228,7 @@ def main_page():
                 str_data.update({'Tuning': str_data['Tuning'], 'Scale Length': str_data['Scale Length'],'String Gauge': str_data['String Gauge'], 'Tension': tension})         
                 total_tension = total_tension + str_data['Tension']
                 if str_data['String Gauge'] == 'None':
-                    str_data.update({'Tension': None}) 
+                    str_data.update({'Tension': 0}) 
                 else:
                     strings_used += 1
                     pass
@@ -236,9 +238,13 @@ def main_page():
 
             with tension_plot_container:
                 x_data, y_data = [], []
-                #x_data = [f'{string} - {gtr_data[string]['Tuning']}' for string in strings]
                 x_data = [f'{string}' for string in strings]
+                if str_data['String Gauge'] == 'None':
+                    str_data.update({'Tension': 0}) 
                 y_data = [gtr_data[string]['Tension'] for string in strings]
+                for i in range(len(strings)):
+                    if y_data[i] == 0:
+                        y_data[i] = 'None'      
                 #fig = go.Figure(go.Scatter(x = x_data, y = y_data, name=guitar))
                 fig.add_trace(go.Scatter(x = x_data, y = y_data, name=gtr_data['Guitar Name']))
                 fig.update_layout(legend=dict(orientation='h', xanchor='center', x=0.5, yanchor='bottom', y=-0.2), margin=dict(l=0, r=0, t=0, b=0))
@@ -249,7 +255,8 @@ def main_page():
             strings = [f'String {x}' for x in range(1,2)]
             for string in strings:
                 str_data = guitar_data[gtr][string]
-    
+
+           
     def change_tuning(tuning:str, guitar:str):
         if tuning != 'Custom':
             guitar_data[guitar]['String 1']['Tuning']  = tunings_dictionary[tuning][0]          
