@@ -5,3 +5,6 @@ String tension calculator, programmed with NiceGUI interface. Review multiple gu
 
 Heavily inspired by the excellent calculator at https://rodrigocfd.github.io/string-tension-calc/ Go check it out!
 
+![Inputs](/images/guitartension01.png)
+
+![Plotly](/images/guitartension02.png)
